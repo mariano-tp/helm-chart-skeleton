@@ -11,8 +11,8 @@ image:
 
 serviceAccount:
   create: true
-  name: ""        # si lo dejas vacío usa el fullname
-  automount: true # recomendado: true por defecto
+  name: ""        # si lo dejás vacío usa el fullname
+  automount: true # default sensato; lo valida el schema
 
 resources: {}
 nodeSelector: {}
