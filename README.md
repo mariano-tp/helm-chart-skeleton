@@ -36,7 +36,7 @@ Tu Actions ya corren (se ven **chart-ci** y **chart-release** con ejecuciones). 
 ## CI (GitHub Actions)
 - `ci.yml`: instala Helm, corre `helm lint` y `helm template` y sube los manifiestos renderizados como artifact.
 - `release.yml`: al crear tag `v*` empaqueta el chart (`.tgz`) y lo publica en la release.
-
+```
 
 ### Valores principales (extracto)
 
@@ -56,6 +56,7 @@ Tu Actions ya corren (se ven **chart-ci** y **chart-release** con ejecuciones). 
 - Instala Helm
 - `helm lint charts/skeleton-app`
 - `helm template …` y sube los manifiestos renderizados como artifact
+
 
 ## Estructura
 ```
