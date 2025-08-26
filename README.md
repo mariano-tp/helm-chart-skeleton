@@ -9,14 +9,21 @@ Chart mínimo de ejemplo para demostrar **lint + render** en CI con Helm.
 
 ## Quick start (local opcional)
 ```bash
-helm dependency update charts/my-service
-helm lint charts/my-service
-helm template charts/my-service --values charts/my-service/values.yaml
+helm dependency update charts/skeleton-app
+helm lint charts/skeleton-app
+helm template demo charts/skeleton-app --values charts/skeleton-app/values.yaml
 ```
+
+## Instalar (desde release)
+
+# Descargar el .tgz de la sección Releases (v0.1.0 o superior)
+helm install demo skeleton-app-0.1.0.tgz \
+  --namespace demo --create-namespace
+
 
 ## CI (GitHub Actions)
 - Instala Helm
-- `helm lint charts/my-service`
+- `helm lint charts/skeleton-app`
 - `helm template …` y sube los manifiestos renderizados como artifact
 
 ## Estructura
