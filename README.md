@@ -1,9 +1,9 @@
-[![CI](https://img.shields.io/github/actions/workflow/status/mariano-tp/helm-chart-skeleton/helm-ci.yml?branch=main&label=helm-ci&style=flat-square)](./.github/workflows/helm-ci.yml)
-[![release](https://img.shields.io/github/v/release/mariano-tp/helm-chart-skeleton?display_name=tag&style=flat-square)](../../releases)
-[![license: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](./LICENSE)
-[![last commit](https://img.shields.io/github/last-commit/mariano-tp/helm-chart-skeleton?style=flat-square)](../../commits/main)
+[![chart-ci](https://img.shields.io/github/actions/workflow/status/mariano-tp/helm-chart-skeleton/ci.yml?label=chart-ci&style=flat-square)](https://github.com/mariano-tp/helm-chart-skeleton/actions/workflows/ci.yml)
+[![release](https://img.shields.io/github/v/release/mariano-tp/helm-chart-skeleton?display_name=tag&style=flat-square)](https://github.com/mariano-tp/helm-chart-skeleton/releases)
+![license: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
-# helm-chart-skeleton
+
+# Helm Chart Skeleton
 
 Chart mínimo de ejemplo para demostrar **lint + render** en CI con Helm.
 
@@ -23,15 +23,20 @@ helm template charts/my-service --values charts/my-service/values.yaml
 ```
 .
 ├── charts/
-│   └── my-service/
+│   └── skeleton-app/
 │       ├── Chart.yaml
 │       ├── values.yaml
 │       ├── templates/
+│       │   ├── _helpers.tpl
 │       │   ├── deployment.yaml
 │       │   ├── service.yaml
-│       │   └── _helpers.tpl
+│       │   ├── ingress.yaml
+│       │   └── NOTES.txt
 │       └── .helmignore
-├── .github/workflows/helm-ci.yml
+└── .github/
+    └── workflows/
+        ├── ci.yml
+        └── release.yml
 ├── LICENSE
 └── CONTRIBUTING.md
 ```
