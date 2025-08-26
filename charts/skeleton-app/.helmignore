@@ -1,0 +1,6 @@
+# Archivos comunes a ignorar al empaquetar
+*.swp
+*.bak
+.DS_Store
+.git/
+.github/
