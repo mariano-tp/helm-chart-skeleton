@@ -1,0 +1,4 @@
+1. Para probar el render:
+   helm template demo charts/skeleton-app
+
+2. Si activás Ingress, recordá ajustar .Values.ingress.hosts[*].host
