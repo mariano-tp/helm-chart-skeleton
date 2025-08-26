@@ -25,17 +25,6 @@ helm upgrade --install demo skeleton-app-0.1.0.tgz \
   --namespace demo --create-namespace
 
 > Confirma que el nombre del `.tgz` coincide con el asset publicado en **v0.1.0**. :contentReference[oaicite:2]{index=2}
-
----
-
-# 4) Sección “CI (qué valida)”
-
-Tu Actions ya corren (se ven **chart-ci** y **chart-release** con ejecuciones). Sumá dos bullets explícitos al README para dejarlo clarito: :contentReference[oaicite:3]{index=3}
-
-```md
-## CI (GitHub Actions)
-- `ci.yml`: instala Helm, corre `helm lint` y `helm template` y sube los manifiestos renderizados como artifact.
-- `release.yml`: al crear tag `v*` empaqueta el chart (`.tgz`) y lo publica en la release.
 ```
 
 ### Valores principales (extracto)
@@ -52,10 +41,15 @@ Tu Actions ya corren (se ven **chart-ci** y **chart-release** con ejecuciones). 
 | `resources.requests.memory`| string   | `128Mi`           | Memoria mínima                       |
 
 
-## CI (GitHub Actions)
-- Instala Helm
-- `helm lint charts/skeleton-app`
-- `helm template …` y sube los manifiestos renderizados como artifact
+## CI/CD (GitHub Actions)
+• chart-ci.yml
+  - Instala Helm 3
+  - helm lint del chart
+  - helm template y sube un artefacto con los manifiestos renderizados
+
+• chart-release.yml (on: release tag v*)
+  - Empaqueta el chart y lo publica en GitHub Releases
+  - Actualiza el índice en la rama gh-pages para usarlo como Helm repo
 
 
 ## Estructura
@@ -80,3 +74,5 @@ Tu Actions ya corren (se ven **chart-ci** y **chart-release** con ejecuciones). 
 
 ## Créditos
 Repositorio de portfolio por @mariano-tp. Licencia MIT.
+
+Ver también: [Código de Conducta](./CODE_OF_CONDUCT.md) · [Contribuir](./CONTRIBUTING.md) · [Seguridad](./SECURITY.md)
