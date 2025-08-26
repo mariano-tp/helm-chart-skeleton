@@ -25,7 +25,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 {{- end -}}
 
-{{/* Helper: nombre del ServiceAccount (usa override si viene) */}}
+{{/* Nombre del ServiceAccount (usa override si viene) */}}
 {{- define "skeleton-app.serviceAccountName" -}}
 {{- if .Values.serviceAccount.name -}}
 {{- .Values.serviceAccount.name | trunc 63 | trimSuffix "-" -}}
@@ -34,7 +34,10 @@ helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 {{- end -}}
 {{- end -}}
 
-{{/* Alias legacy (por si algún template usa skeleton.*) */}}
+{{/* Alias legacy por si algún template usa skeleton.* */}}
 {{- define "skeleton.name" -}}{{ include "skeleton-app.name" . }}{{- end -}}
+{{- define "skeleton.fullname" -}}{{ include "skeleton-app.fullname" . }}{{- end -}}
+{{- define "skeleton.labels" -}}{{ include "skeleton-app.labels" . }}{{- end -}}
+}}{{- end -}}
 {{- define "skeleton.fullname" -}}{{ include "skeleton-app.fullname" . }}{{- end -}}
 {{- define "skeleton.labels" -}}{{ include "skeleton-app.labels" . }}{{- end -}}
