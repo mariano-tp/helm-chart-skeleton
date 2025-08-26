@@ -1,16 +1,9 @@
 apiVersion: v2
 name: skeleton-app
-description: "Skeleton Helm chart for a simple web app (Deployment + Service + Ingress)"
+description: Skeleton de Helm Chart para demos/portfolio
 type: application
-version: 0.1.0        # versión del chart (semver)
-appVersion: "1.0.0"   # versión de la app (informativo)
-kubeVersion: ">=1.24.0-0"
-keywords:
-  - skeleton
-  - web
-home: https://github.com/mariano-tp/helm-chart-skeleton
-sources:
-  - https://github.com/mariano-tp/helm-chart-skeleton
+version: 0.1.0       # versión del chart (semver)
+appVersion: "1.0.0"  # versión de la app (string)
 maintainers:
   - name: mariano-tp
     email: 228102224+mariano-tp@users.noreply.github.com
