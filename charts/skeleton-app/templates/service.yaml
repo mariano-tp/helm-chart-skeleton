@@ -1,14 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "skeleton.name" . }}
+  name: {{ include "skeleton-app.fullname" . }}
   labels:
-    {{- include "skeleton.labels" . | nindent 4 }}
+    {{- include "skeleton-app.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
+  type: ClusterIP
   selector:
-    {{- include "skeleton.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/name: {{ include "skeleton-app.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
   ports:
     - name: http
-      port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.targetPort }}
+      port: 80
+      targetPort: http
+      protocol: TCP
