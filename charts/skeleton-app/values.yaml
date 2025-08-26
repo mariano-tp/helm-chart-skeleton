@@ -11,7 +11,8 @@ image:
 
 serviceAccount:
   create: true
-  name: ""   # si queda vacío usa el fullname
+  # Si queda vacío usa el fullname generado por el chart
+  name: ""
 
 resources: {}
 nodeSelector: {}
