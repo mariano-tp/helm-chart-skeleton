@@ -1,4 +1,4 @@
-[![chart-ci](https://github.com/mariano-tp/helm-chart-skeleton/actions/workflows/chart-ci.yml/badge.svg?branch=main)](https://github.com/mariano-tp/helm-chart-skeleton/actions/workflows/chart-ci.yml)
+[![chart-ci](https://img.shields.io/github/actions/workflow/status/mariano-tp/helm-chart-skeleton/chart-ci.yml?branch=main&style=flat-square&label=chart-ci)](https://github.com/mariano-tp/helm-chart-skeleton/actions/workflows/chart-ci.yml)
 [![last commit](https://img.shields.io/github/last-commit/mariano-tp/helm-chart-skeleton?style=flat-square)](https://github.com/mariano-tp/helm-chart-skeleton/commits/main)
 [![release](https://img.shields.io/github/v/release/mariano-tp/helm-chart-skeleton?display_name=tag&style=flat-square)](https://github.com/mariano-tp/helm-chart-skeleton/releases)
 [![license: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](./LICENSE)
