@@ -1,9 +1,6 @@
 apiVersion: v2
 name: skeleton-app
-description: Skeleton de Helm Chart para demos/portfolio
+description: Minimal Helm chart skeleton (Deployment + Service + ServiceAccount)
 type: application
-version: 0.1.0       # versión del chart (semver)
-appVersion: "1.0.0"  # versión de la app (string)
-maintainers:
-  - name: mariano-tp
-    email: 228102224+mariano-tp@users.noreply.github.com
+version: 0.1.0
+appVersion: "1.0.0"
