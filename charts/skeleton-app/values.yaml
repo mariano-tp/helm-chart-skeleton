@@ -12,7 +12,7 @@ image:
 serviceAccount:
   create: true
   name: ""        # si lo dejas vacío usa el fullname
-  automount: true # <— nuevo (por defecto true)
+  automount: true # recomendado: true por defecto
 
 resources: {}
 nodeSelector: {}
