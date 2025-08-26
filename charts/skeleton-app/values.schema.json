@@ -1,0 +1,97 @@
+```json
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "skeleton-app values",
+  "type": "object",
+  "properties": {
+    "replicaCount": { "type": "integer", "minimum": 1 },
+    "image": {
+      "type": "object",
+      "properties": {
+        "repository": { "type": "string", "minLength": 1 },
+        "tag": { "type": "string", "minLength": 1 },
+        "pullPolicy": { "type": "string", "enum": ["Always", "IfNotPresent", "Never"] }
+      },
+      "required": ["repository", "tag", "pullPolicy"],
+      "additionalProperties": false
+    },
+    "service": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["ClusterIP", "NodePort", "LoadBalancer"] },
+        "port": { "type": "integer", "minimum": 1, "maximum": 65535 },
+        "targetPort": { "type": "integer", "minimum": 1, "maximum": 65535 }
+      },
+      "required": ["type", "port", "targetPort"],
+      "additionalProperties": false
+    },
+    "ingress": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "className": { "type": "string" },
+        "hosts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "host": { "type": "string" },
+              "paths": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "path": { "type": "string" },
+                    "pathType": { "type": "string", "enum": ["Prefix", "ImplementationSpecific", "Exact"] }
+                  },
+                  "required": ["path", "pathType"],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": ["host", "paths"],
+            "additionalProperties": false
+          }
+        },
+        "tls": { "type": "array" }
+      },
+      "required": ["enabled"],
+      "additionalProperties": true
+    },
+    "resources": { "type": "object" },
+    "nodeSelector": { "type": "object" },
+    "tolerations": { "type": "array" },
+    "affinity": { "type": "object" },
+    "livenessProbe": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "path": { "type": "string" },
+        "port": { "type": "string" }
+      },
+      "required": ["enabled"],
+      "additionalProperties": true
+    },
+    "readinessProbe": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "path": { "type": "string" },
+        "port": { "type": "string" }
+      },
+      "required": ["enabled"],
+      "additionalProperties": true
+    },
+    "serviceAccount": {
+      "type": "object",
+      "properties": {
+        "create": { "type": "boolean" },
+        "name": { "type": "string" }
+      },
+      "required": ["create"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["replicaCount", "image", "service", "ingress", "serviceAccount"],
+  "additionalProperties": true
+}
