@@ -1,4 +1,5 @@
 name: chart-ci
+
 on:
   push:
     branches: [ main ]
@@ -10,10 +11,6 @@ on:
     paths:
       - 'charts/**'
   workflow_dispatch:
-
-concurrency:
-  group: chart-ci-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   lint-and-template:
@@ -27,15 +24,19 @@ jobs:
           version: v3.14.4
 
       - name: Helm lint
-        run: helm lint charts/skeleton-app
+        run: |
+          set -euo pipefail
+          helm lint charts/skeleton-app
 
       - name: Render templates
         run: |
+          mkdir -p rendered
           helm template demo charts/skeleton-app \
-            --namespace demo --create-namespace > rendered.yaml
+            --values charts/skeleton-app/values.yaml \
+            > rendered/all.yaml
 
       - name: Upload rendered manifests
         uses: actions/upload-artifact@v4
         with:
           name: rendered-manifests
-          path: rendered.yaml
+          path: rendered/all.yaml
