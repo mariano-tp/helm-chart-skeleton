@@ -10,6 +10,7 @@ helm template demo charts/skeleton-app --values charts/skeleton-app/values.yaml
 ```
 
 ## Instalar (desde release)
+
 # Descargar .tgz desde Releases (v0.1.0 o superior)
 helm install demo skeleton-app-0.1.0.tgz \
   --namespace demo --create-namespace
