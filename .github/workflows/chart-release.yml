@@ -1,0 +1,34 @@
+name: chart-release
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.14.4
+
+      - name: Package chart
+        run: |
+          helm dependency update charts/skeleton-app || true
+          helm package charts/skeleton-app --destination dist
+
+      - name: Upload chart artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: skeleton-app-chart
+          path: dist/*.tgz
+
+      - name: Attach to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.tgz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
