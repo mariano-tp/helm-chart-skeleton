@@ -1,50 +1,19 @@
-replicaCount: 2
+# Overrides de nombre (opcionales)
+nameOverride: ""
+fullnameOverride: ""
+
+replicaCount: 1
 
 image:
   repository: nginx
-  tag: "1.25"
+  tag: latest
   pullPolicy: IfNotPresent
 
-podAnnotations: {}
-podLabels: {}
+serviceAccount:
+  create: true
+  name: ""   # si lo dejas vacío usa el fullname
 
-service:
-  type: ClusterIP
-  port: 80
-  targetPort: 80
-
-ingress:
-  enabled: false
-  className: ""
-  hosts:
-    - host: example.local
-      paths:
-        - path: /
-          pathType: Prefix
-  tls: []  # - secretName: my-tls  hosts: [example.local]
-
-resources:
-  limits:
-    cpu: 200m
-    memory: 128Mi
-  requests:
-    cpu: 50m
-    memory: 64Mi
-
+resources: {}
 nodeSelector: {}
 tolerations: []
 affinity: {}
-
-livenessProbe:
-  enabled: true
-  path: /
-  port: http
-
-readinessProbe:
-  enabled: true
-  path: /
-  port: http
-
-serviceAccount:
-  create: false
-  name: ""
