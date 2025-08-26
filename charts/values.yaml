@@ -1,24 +1,50 @@
-replicaCount: 1
-
-nameOverride: ""
-fullnameOverride: ""
+replicaCount: 2
 
 image:
   repository: nginx
   tag: "1.25"
   pullPolicy: IfNotPresent
 
+podAnnotations: {}
+podLabels: {}
+
 service:
   type: ClusterIP
   port: 80
+  targetPort: 80
+
+ingress:
+  enabled: false
+  className: ""
+  hosts:
+    - host: example.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []  # - secretName: my-tls  hosts: [example.local]
 
 resources:
+  limits:
+    cpu: 200m
+    memory: 128Mi
   requests:
     cpu: 50m
     memory: 64Mi
-  limits:
-    cpu: 100m
-    memory: 128Mi
 
-labels: {}
-annotations: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+livenessProbe:
+  enabled: true
+  path: /
+  port: http
+
+readinessProbe:
+  enabled: true
+  path: /
+  port: http
+
+serviceAccount:
+  create: false
+  name: ""
