@@ -1,0 +1,31 @@
+name: chart-release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # ej: v0.2.0
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.14.4
+
+      - name: Package chart
+        run: |
+          mkdir -p dist
+          helm dependency build charts/skeleton-app || true
+          helm package charts/skeleton-app --destination dist
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.tgz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
