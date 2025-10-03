@@ -7,52 +7,51 @@
 
 # Helm Chart Skeleton
 
-Plantilla mínima para crear charts de Helm productivos: Deployment + Service + Ingress opcional, convención de `values.yaml`, y **CI en GitHub Actions** (lint + render + instalación en clúster efímero).
+Minimal template for creating production-ready Helm charts: Deployment + Service + optional Ingress, `values.yaml` convention, and **CI in GitHub Actions** (lint + render + ephemeral cluster install).
 
-## Quick start (local opcional)
+## Quick start (local optional)
 ```bash
 helm dependency update charts/skeleton-app
 helm lint charts/skeleton-app
 helm template demo charts/skeleton-app --values charts/skeleton-app/values.yaml
 ```
 
-## Instalar (desde Releases)
+## Install (from Releases)
 
-Descargá el `.tgz` de la [última release](https://github.com/mariano-tp/helm-chart-skeleton/releases/latest) y ejecutá:
+Download the `.tgz` from the [latest release](https://github.com/mariano-tp/helm-chart-skeleton/releases/latest) and run:
 
 ```bash
-helm upgrade --install demo skeleton-app-0.1.0.tgz \
-  --namespace demo --create-namespace
+helm upgrade --install demo skeleton-app-0.1.0.tgz   --namespace demo --create-namespace
 
-> Confirma que el nombre del `.tgz` coincide con el asset publicado en **v0.1.0**. :contentReference[oaicite:2]{index=2}
+> Confirm that the `.tgz` name matches the asset published in **v0.1.0**.
 ```
 
-### Valores principales (extracto)
+### Main values (excerpt)
 
-| Clave                       | Tipo     | Default           | Descripción                          |
-|----------------------------|----------|-------------------|--------------------------------------|
-| `image.repository`         | string   | `nginx`           | Imagen base del deployment           |
-| `image.tag`                | string   | `stable`          | Tag de la imagen                     |
-| `replicaCount`             | number   | `1`               | Réplicas del Deployment              |
-| `service.type`             | string   | `ClusterIP`       | Tipo de Service                      |
-| `service.port`             | number   | `80`              | Puerto del Service                   |
-| `ingress.enabled`          | bool     | `false`           | Habilita Ingress                     |
-| `resources.requests.cpu`   | string   | `100m`            | CPU mínima                           |
-| `resources.requests.memory`| string   | `128Mi`           | Memoria mínima                       |
+| Key                        | Type    | Default           | Description                          |
+|----------------------------|---------|-------------------|--------------------------------------|
+| `image.repository`         | string  | `nginx`           | Base image for the deployment        |
+| `image.tag`                | string  | `stable`          | Image tag                            |
+| `replicaCount`             | number  | `1`               | Number of Deployment replicas        |
+| `service.type`             | string  | `ClusterIP`       | Service type                         |
+| `service.port`             | number  | `80`              | Service port                         |
+| `ingress.enabled`          | bool    | `false`           | Enable Ingress                       |
+| `resources.requests.cpu`   | string  | `100m`            | Minimum CPU                          |
+| `resources.requests.memory`| string  | `128Mi`           | Minimum memory                       |
 
 
 ## CI/CD (GitHub Actions)
 • chart-ci.yml
-  - Instala Helm 3
-  - helm lint del chart
-  - helm template y sube un artefacto con los manifiestos renderizados
+  - Installs Helm 3
+  - helm lint on the chart
+  - helm template and uploads an artifact with rendered manifests
 
 • chart-release.yml (on: release tag v*)
-  - Empaqueta el chart y lo publica en GitHub Releases
-  - Actualiza el índice en la rama gh-pages para usarlo como Helm repo
+  - Packages the chart and publishes it in GitHub Releases
+  - Updates the index on the gh-pages branch to use it as a Helm repo
 
 
-## Estructura
+## Structure
 ```
 .
 ├── charts/
@@ -72,7 +71,8 @@ helm upgrade --install demo skeleton-app-0.1.0.tgz \
     └── release.yml
 ```
 
-## Créditos
-Repositorio de portfolio por @mariano-tp. Licencia MIT.
+## Credits
+Portfolio repository by @mariano-tp. Licensed under MIT.
 
-Ver también: [Código de Conducta](./CODE_OF_CONDUCT.md) · [Contribuir](./CONTRIBUTING.md) · [Seguridad](./SECURITY.md)
+See also: [Code of Conduct](./CODE_OF_CONDUCT.md) · [Contributing](./CONTRIBUTING.md) · [Security](./SECURITY.md)
+
