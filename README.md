@@ -1,12 +1,12 @@
 > Available languages / Idiomas disponibles: [*English*](README.md) / [*Español*](README.ES.md)  
 
-Back to repository: [Home](https://github.com/mariano-tp/mariano-tp/blob/main/README.md)
+Back to repository: [Home](https://github.com/metorresponce/metorresponce/blob/main/README.md)
 
-[![chart-ci](https://img.shields.io/github/actions/workflow/status/mariano-tp/helm-chart-skeleton/chart-ci.yml?branch=main&style=flat-square&label=chart-ci)](https://github.com/mariano-tp/helm-chart-skeleton/actions/workflows/chart-ci.yml)
-[![last commit](https://img.shields.io/github/last-commit/mariano-tp/helm-chart-skeleton?style=flat-square)](https://github.com/mariano-tp/helm-chart-skeleton/commits/main)
-[![release](https://img.shields.io/github/v/release/mariano-tp/helm-chart-skeleton?display_name=tag&style=flat-square)](https://github.com/mariano-tp/helm-chart-skeleton/releases)
+[![chart-ci](https://img.shields.io/github/actions/workflow/status/metorresponce/helm-chart-skeleton/chart-ci.yml?branch=main&style=flat-square&label=chart-ci)](https://github.com/metorresponce/helm-chart-skeleton/actions/workflows/chart-ci.yml)
+[![last commit](https://img.shields.io/github/last-commit/metorresponce/helm-chart-skeleton?style=flat-square)](https://github.com/metorresponce/helm-chart-skeleton/commits/main)
+[![release](https://img.shields.io/github/v/release/metorresponce/helm-chart-skeleton?display_name=tag&style=flat-square)](https://github.com/metorresponce/helm-chart-skeleton/releases)
 [![license: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](./LICENSE)
-[![stars](https://img.shields.io/github/stars/mariano-tp/helm-chart-skeleton?style=flat-square)](https://github.com/mariano-tp/helm-chart-skeleton/stargazers)
+[![stars](https://img.shields.io/github/stars/metorresponce/helm-chart-skeleton?style=flat-square)](https://github.com/metorresponce/helm-chart-skeleton/stargazers)
 
 # Helm Chart Skeleton
 
@@ -75,7 +75,7 @@ See charts/skeleton-app/values.yaml for the full list.
         └── chart-release.yml
 
 ## Credits
-Portfolio repository by @mariano-tp. Licensed under MIT.
+Portfolio repository by @metorresponce. Licensed under MIT.
 
 See also: [Code of Conduct](./CODE_OF_CONDUCT.md) · [Contributing](./CONTRIBUTING.md) · [Security](./SECURITY.md)
 
